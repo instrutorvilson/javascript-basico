@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function usaSwitch() {
+            var cor = "yellow";
+            switch (cor) {
+                case "red":
+                    document.write("Pare!");
+                    break;
+                case "green":
+                    document.write("Siga!")
+                    break;
+                case "yellow":
+                    document.write("Atenção!");
+                    break;
+                default:
+                    document.write("Cor desconhecida");
+            }
+        }
+
+        function usaIfElse(){
+            var cor = "blue";
+            if(cor == "red"){
+                document.write("Pare!");  
+            }
+            else if (cor == "green"){
+                document.write("Siga!");
+            }
+            else if(cor == "yellow"){
+                document.write("Atenção!");
+            }
+            else{
+                document.write("Cor desconhecida"); 
+            }
+        }
+    </script>
+
+     <script>
+        // usaSwitch();
+        usaIfElse();
+     </script>
+</body>
+
+</html>

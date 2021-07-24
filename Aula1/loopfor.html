@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="valor" 
+           placeholder="Informe quantas repetições"
+            /> 
+    <hr />
+    <input type="text" 
+          id="tipoExibicao"
+          placeholder="Informe par ou impar"
+          onblur="executar()" />
+
+    <p id="resultado"></p>
+    <script>
+        function forSimples(){
+            var valor = document.getElementById("valor").value;
+            document.getElementById("resultado").innerHTML = "";
+            for(var i = 0; i < valor; i++){
+               document.getElementById("resultado").innerHTML 
+               += "valor de i "+ i + "<br />"; 
+            }
+        }
+
+        function executar(){
+            var tipoExibicao = document.getElementById("tipoExibicao").value;
+            switch(tipoExibicao){
+                case "par":
+                    exibePar();
+                    break;
+                case "impar":
+                    exibeImpar();
+                    break; 
+                default:
+                    forSimples();       
+            }
+        }
+
+        function exibePar(){
+            var valor = document.getElementById("valor").value;
+            document.getElementById("resultado").innerHTML = "";
+            for(var i = 0; i < valor; i++){
+                if(i % 2 == 0)
+                  document.getElementById("resultado").innerHTML 
+                  += "valor de i "+ i + "<br />";             
+            }
+        }
+
+        function exibeImpar(){
+            var valor = document.getElementById("valor").value;
+            document.getElementById("resultado").innerHTML = "";
+            for(var i = 0; i < valor; i++){
+                if(i % 2 != 0)
+                  document.getElementById("resultado").innerHTML 
+                  += "valor de i "+ i + "<br />";             
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="idade" placeholder="Informe sua idade" />
+    <button onclick="lerIdade()">Verifica idade</button>
+    <hr />
+    <p id="resultado"></p>
+
+    <script>
+        function lerIdade() {
+            var idade = document.getElementById('idade').value;
+            /*
+             if(idade < 18){
+                 document.getElementById('resultado').innerHTML = "menor de idade";
+             }
+             else
+                 document.getElementById('resultado').innerHTML = "maior de idade";
+            */
+            var msg = "maior de idade";
+            if (idade < 18) {
+                msg = "menor de idade";
+            }
+            document.getElementById('resultado').innerHTML = msg;
+        }
+    </script>
+</body>
+
+</html>
