@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" 
+           id="peso"
+           placeholder="Informe seu peso"
+           />
+    <input type="number" 
+           id="altura"
+           placeholder="Informe seu altura"
+    />
+    <button onclick="calculaImc()">Calcular</button>
+    <p id="valor">
+    </p>
+    <p id="resultado"></p>
+
+    <script>
+       function calculaImc(){
+           var peso = document.getElementById("peso").value;
+           var altura = document.getElementById("altura").value;
+           var indice = peso / (altura * altura);
+
+           document.getElementById("valor").innerHTML = indice;
+           var msg = analisarIndice(indice);
+           document.getElementById("resultado").innerHTML = msg;
+        }
+
+        function analisarIndice(x){
+           // let msg = "Sem indice definido";
+           let msg = "Obesidade Grau III";
+            //
+            if(x < 17){
+                msg = "Muito abaixo do peso";
+            }
+            else if (x < 18.5){
+                msg = "Abaixo do peso";
+            }
+            else if (x < 25)
+            {
+                msg = "Peso normal";
+            }
+            else if (x < 30){
+                msg = "Acima do peso";
+            }
+            else if (x < 35){
+                msg = "Obesidade Grau I";
+            }
+            else if (x <= 40){
+                msg = "Obesidade Grau II";
+            }
+           /* else if(x > 40 ){
+                msg = "Obesidade Grau III";
+            }*/
+            return msg;
+        }
+    </script>
+</body>
+</html>
