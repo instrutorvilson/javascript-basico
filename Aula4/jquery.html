@@ -20,9 +20,9 @@
         <input type="text" class="form-control mb-2" id="descricao" placeholder="Informe o descrição" />
         <input type="text" class="form-control mb-2" id="preco" placeholder="Informe o preço" />
         <button class="btn btn-outline-primary" id="gravar">Gravar</button>
-        <button class="btn btn-outline-secondary">Alterar</button>
-        <button class="btn btn-outline-danger">Excluir</button>
-        <button class="btn btn-outline-info">Novo</button>
+        <button class="btn btn-outline-secondary" id="alterar">Alterar</button>
+        <button class="btn btn-outline-danger" id="excluir">Excluir</button>
+        <button class="btn btn-outline-info" id="novo">Novo</button>
     </div>
     <hr />
     <div class="container">
@@ -66,15 +66,22 @@
                 })
 
                 $("#idCodigo").blur(
-                    function(){
+                    function () {
                         const cod = $("#idCodigo").val();
-                        $.get("http://localhost:3000/produtos/"+cod,
-                        function(data, status){
-                            displayOne(data);                         
-                        }
+                        $.get("http://localhost:3000/produtos/" + cod,
+                            function (data, status) {
+                                displayOne(data);
+                            }
                         )
                     }
                 )
+
+                $("#novo").click(
+                    function () {
+                       habilitaBotoes(false)
+                    }
+                )
+
             }
 
 
@@ -94,10 +101,17 @@
             $("tbody").html(text);
         }
 
-        function displayOne(dados){
-           $("#nome").val(dados.nome);
-           $("#descricao").val(dados.descricao);
-           $("#preco").val(dados.preco);
+        function displayOne(dados) {
+            $("#nome").val(dados.nome);
+            $("#descricao").val(dados.descricao);
+            $("#preco").val(dados.preco);  
+            habilitaBotoes(true);         
+        }
+
+        function habilitaBotoes(ativar){
+            $("#gravar").attr("disabled", ativar);
+            $("#alterar").attr("disabled", !ativar);
+            $("#excluir").attr("disabled", !ativar);
         }
     </script>
 </body>
