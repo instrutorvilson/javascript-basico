@@ -63,6 +63,7 @@
                         function (data, status) {
                             alert("Produto " + data.id + " inserido com sucesso");
                         })
+                    limpaCampos();
                 })
 
                 $("#idCodigo").blur(
@@ -78,7 +79,8 @@
 
                 $("#novo").click(
                     function () {
-                       habilitaBotoes(false)
+                       habilitaBotoes(false);
+                       limpaCampos();
                     }
                 )
 
@@ -111,7 +113,14 @@
         function habilitaBotoes(ativar){
             $("#gravar").attr("disabled", ativar);
             $("#alterar").attr("disabled", !ativar);
-            $("#excluir").attr("disabled", !ativar);
+            $("#excluir").attr("disabled", !ativar);            
+        }
+
+        function limpaCampos(){
+            $("#idCodigo").val('');  
+            $("#nome").val('');
+            $("#descricao").val('');
+            $("#preco").val('');
         }
     </script>
 </body>
