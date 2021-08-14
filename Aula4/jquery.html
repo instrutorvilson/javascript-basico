@@ -19,7 +19,7 @@
         <input type="text" class="form-control mb-2" id="nome" placeholder="Informe o nome" />
         <input type="text" class="form-control mb-2" id="descricao" placeholder="Informe o descrição" />
         <input type="text" class="form-control mb-2" id="preco" placeholder="Informe o preço" />
-        <button class="btn btn-outline-primary">Gravar</button>
+        <button class="btn btn-outline-primary" id="gravar">Gravar</button>
         <button class="btn btn-outline-secondary">Alterar</button>
         <button class="btn btn-outline-danger">Excluir</button>
         <button class="btn btn-outline-info">Novo</button>
@@ -46,11 +46,38 @@
                     function () {
                         $.get("http://localhost:3000/produtos",
                             function (data, status) {
-                               displayAll(data);
+                                displayAll(data);
                             })
                     }
                 )
+
+                $("#gravar").click(function () {
+                    const dados = {
+                        nome: $("#nome").val(),
+                        descricao: $("#descricao").val(),
+                        preco: $("#preco").val()
+                    }
+
+                    $.post("http://localhost:3000/produtos",
+                        dados,
+                        function (data, status) {
+                            alert("Produto " + data.id + " inserido com sucesso");
+                        })
+                })
+
+                $("#idCodigo").blur(
+                    function(){
+                        const cod = $("#idCodigo").val();
+                        $.get("http://localhost:3000/produtos/"+cod,
+                        function(data, status){
+                            displayOne(data);                         
+                        }
+                        )
+                    }
+                )
             }
+
+
         )
     </script>
     <script>
@@ -65,6 +92,12 @@
                 text += "</tr>";
             }
             $("tbody").html(text);
+        }
+
+        function displayOne(dados){
+           $("#nome").val(dados.nome);
+           $("#descricao").val(dados.descricao);
+           $("#preco").val(dados.preco);
         }
     </script>
 </body>

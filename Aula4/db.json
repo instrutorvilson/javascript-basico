@@ -17,6 +17,12 @@
       "descricao": "Entrecorte",
       "preco": 900,
       "id": 3
+    },
+    {
+      "nome": "Feijão preto",
+      "descricao": "Bom para fazer feijoada",
+      "preco": "20",
+      "id": 4
     }
   ]
 }
