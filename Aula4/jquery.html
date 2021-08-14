@@ -87,6 +87,44 @@
                     }
                 )
 
+                $("#alterar").click(
+                    function () {
+                        if (validadados()) {
+                            const cod = $("#idCodigo").val();
+                            const dados = {
+                                nome: $("#nome").val(),
+                                descricao: $("#descricao").val(),
+                                preco: $("#preco").val()
+                            }
+                            $.ajax(
+                                {
+                                    type: "PUT",
+                                    url: "http://localhost:3000/produtos/" + cod,
+                                    data: JSON.stringify(dados),
+                                    dataType: 'json',
+                                    contentType: "application/json; charset=utf-8"
+                                }
+                            ).done(function (data, status) {
+                                alert("Registro alterado com sucesso");
+                            })
+                        }
+                    }
+                )
+
+                $("#excluir").click(
+                    function () {
+                         $.ajax(
+                            {
+                                type: "DELETE",
+                                url: "http://localhost:3000/produtos/" + $("#idCodigo").val(),                               
+                            }
+                        ).done(function (data, status) {
+                            alert("Registro excluído com sucesso");
+                        });
+                        limpaCampos();  
+                    }
+                    
+                )
             }
 
 
@@ -95,19 +133,19 @@
     <script>
         function validadados() {
             const nome = $("#nome");
-            if(nome.val()===""){
+            if (nome.val() === "") {
                 alert('Informe nome');
                 nome.focus();
                 return false;
             }
 
-            if($("#descricao").val()===""){
+            if ($("#descricao").val() === "") {
                 alert('Informe descrição');
                 $("#descricao").focus();
                 return false;
             }
 
-            if($("#preco").val()===""){
+            if ($("#preco").val() === "") {
                 alert('Informe preço');
                 $("#preco").focus();
                 return false;
