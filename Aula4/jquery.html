@@ -52,18 +52,21 @@
                 )
 
                 $("#gravar").click(function () {
-                    const dados = {
-                        nome: $("#nome").val(),
-                        descricao: $("#descricao").val(),
-                        preco: $("#preco").val()
-                    }
+                    const dadosValidos = validadados();
+                    if (dadosValidos) {
+                        const dados = {
+                            nome: $("#nome").val(),
+                            descricao: $("#descricao").val(),
+                            preco: $("#preco").val()
+                        }
 
-                    $.post("http://localhost:3000/produtos",
-                        dados,
-                        function (data, status) {
-                            alert("Produto " + data.id + " inserido com sucesso");
-                        })
-                    limpaCampos();
+                        $.post("http://localhost:3000/produtos",
+                            dados,
+                            function (data, status) {
+                                alert("Produto " + data.id + " inserido com sucesso");
+                            })
+                        limpaCampos();
+                    }
                 })
 
                 $("#idCodigo").blur(
@@ -79,8 +82,8 @@
 
                 $("#novo").click(
                     function () {
-                       habilitaBotoes(false);
-                       limpaCampos();
+                        habilitaBotoes(false);
+                        limpaCampos();
                     }
                 )
 
@@ -90,6 +93,28 @@
         )
     </script>
     <script>
+        function validadados() {
+            const nome = $("#nome");
+            if(nome.val()===""){
+                alert('Informe nome');
+                nome.focus();
+                return false;
+            }
+
+            if($("#descricao").val()===""){
+                alert('Informe descrição');
+                $("#descricao").focus();
+                return false;
+            }
+
+            if($("#preco").val()===""){
+                alert('Informe preço');
+                $("#preco").focus();
+                return false;
+            }
+            return true;
+        }
+
         function displayAll(dados) {
             var text = "";
             for (ob in dados) {
@@ -106,18 +131,18 @@
         function displayOne(dados) {
             $("#nome").val(dados.nome);
             $("#descricao").val(dados.descricao);
-            $("#preco").val(dados.preco);  
-            habilitaBotoes(true);         
+            $("#preco").val(dados.preco);
+            habilitaBotoes(true);
         }
 
-        function habilitaBotoes(ativar){
+        function habilitaBotoes(ativar) {
             $("#gravar").attr("disabled", ativar);
             $("#alterar").attr("disabled", !ativar);
-            $("#excluir").attr("disabled", !ativar);            
+            $("#excluir").attr("disabled", !ativar);
         }
 
-        function limpaCampos(){
-            $("#idCodigo").val('');  
+        function limpaCampos() {
+            $("#idCodigo").val('');
             $("#nome").val('');
             $("#descricao").val('');
             $("#preco").val('');
