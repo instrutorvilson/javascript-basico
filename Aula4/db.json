@@ -1,0 +1,22 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Hambúrguer",
+      "descricao": "Pão, bife de hambúrguer 90g, salada e batata.",
+      "preco": 8.5
+    },
+    {
+      "nome": "Pizza",
+      "descricao": "Calabresa, cebola, ovo cozido",
+      "preco": 90,
+      "id": 2
+    },
+    {
+      "nome": "Churrasco",
+      "descricao": "Entrecorte",
+      "preco": 900,
+      "id": 3
+    }
+  ]
+}

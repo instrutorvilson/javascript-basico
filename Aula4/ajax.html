@@ -18,13 +18,12 @@
                 <th>Email</th>
             </thead>
             <tbody>
-                //
+                
             </tbody>
         </table>
     </div>
     <button onclick="load()">Carregar</button>
-
-    <script>
+     <script>
         function load() {
             const xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -38,9 +37,7 @@
 
         function display(inputDados){
            var text = "";
-           console.log(inputDados);
            const dados = JSON.parse(inputDados);
-           console.log(dados)
            for(ob in dados){
               text += "<tr>"; 
               text += "<td>"+ dados[ob].id +"</td>";
@@ -51,6 +48,7 @@
            }
            document.getElementsByTagName("tbody")[0].innerHTML = text;
         }
+       
     </script>
 </body>
 
